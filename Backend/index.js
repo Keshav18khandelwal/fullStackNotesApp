@@ -9,7 +9,7 @@ connectToMongo();
 const app = express()
 app.use(cors());
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 4000;
 app.use(express.json());
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/notes', require('./routes/notes'));
