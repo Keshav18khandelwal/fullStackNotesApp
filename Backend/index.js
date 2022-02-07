@@ -3,6 +3,7 @@ const connectToMongo= require('./db');
 const express = require('express');
 var cors = require('cors')
 require('dotenv').config();
+const path =require ('path')
 
 connectToMongo();
 const app = express()
@@ -15,7 +16,7 @@ app.use('/api/notes', require('./routes/notes'));
 
 //for heroku 
 if(process.env.NODE_ENV=="production"){
-  app.use(express.static("frontend/bulid"));
+  app.use(express.static("frontend/build"));
   app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
   });
