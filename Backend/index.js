@@ -15,7 +15,10 @@ app.use('/api/notes', require('./routes/notes'));
 
 //for heroku 
 if(process.env.NODE_ENV=="production"){
-  app.use(express.static("frontend/bulid"))
+  app.use(express.static("frontend/bulid"));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
+  });
 }
 
 app.listen(port, () => {
