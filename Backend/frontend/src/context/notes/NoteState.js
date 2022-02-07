@@ -4,7 +4,7 @@ import NoteContext from './NoteContext';
 
 
 const NoteState = (props) => {
-const host='http://localhost:5000'
+// const host='http://localhost:5000'
   // const host=process.env.PORT
   const initialNotes = []
 
@@ -15,7 +15,7 @@ const [uname, setuname] = useState({name:"",email:"",date:""});
 
 const Uname= async ()=>{
     
-  const response = await fetch(`http://localhost:5000/api/auth/getuser`, {
+  const response = await fetch(`/api/auth/getuser`, {
       method: 'GET',
       headers: {
           'Content-Type': 'application/json',
@@ -39,7 +39,7 @@ const Uname= async ()=>{
   //adding a note
   const addNote = async ({ title, description, tag }) => {
 
-    const response=await fetch(`${host}/api/notes/addnotes`, {
+    const response=await fetch(`/api/notes/addnotes`, {
       method: 'POST', 
       headers: {
         'Content-Type': 'application/json',
@@ -56,7 +56,7 @@ const Uname= async ()=>{
   //deleting a note
   const deleteNote = async(id) => {
 
-    const response=await fetch(`${host}/api/notes/deletenote/${id}`, {
+    const response=await fetch(`/api/notes/deletenote/${id}`, {
       method: 'DELETE', 
       headers: {
         'Content-Type': 'application/json',
@@ -74,7 +74,7 @@ const Uname= async ()=>{
 
   //editing a note
   const editNote = async (id, title, description, tag) => {
-    const response=await fetch(`${host}/api/notes/updatenote/${id}`, {
+    const response=await fetch(`/api/notes/updatenote/${id}`, {
       method: 'PUT', 
       headers: {
         'Content-Type': 'application/json',
@@ -99,7 +99,7 @@ const Uname= async ()=>{
   //getting all notes
   const getNote = async () => {
 
-    const response=await fetch(`${host}/api/notes/fetchallnotes`, {
+    const response=await fetch(`/api/notes/fetchallnotes`, {
       method: 'GET', 
       headers: {
         'Content-Type': 'application/json',
